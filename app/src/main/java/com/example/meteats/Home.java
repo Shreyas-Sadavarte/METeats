@@ -67,7 +67,7 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cartIntent = new Intent(Home.this,Cart.class;
+                Intent cartIntent = new Intent(Home.this,Cart.class);
                 startActivity(cartIntent);
 
             }
@@ -161,9 +161,17 @@ public class Home extends AppCompatActivity
         if (id == R.id.nav_menu) {
             // Handle the camera action
         } else if (id == R.id.nav_cart) {
+            Intent cartIntent =new Intent(Home.this,Cart.class);
+            startActivity(cartIntent);
 
         } else if (id == R.id.nav_log_out) {
+            Intent signin = new Intent(Home.this,yolo.class);
+            signin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signin);
 
+        }else if (id == R.id.nav_orders){
+            Intent orderIntent =new Intent(Home.this,OrderStatus.class);
+            startActivity(orderIntent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

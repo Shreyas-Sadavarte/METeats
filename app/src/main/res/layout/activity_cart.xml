@@ -66,9 +66,8 @@
                 android:background="@drawable/rounded_button"
                 android:text="Place Order"
                 android:textColor="@android:color/white"
-                android:shadowHeight="5dp"
-                android:shadowColor="@android:color/black"
-                android:shadowEnabled="true"
+
+
 
 
                  />

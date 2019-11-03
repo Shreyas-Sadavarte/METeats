@@ -29,6 +29,7 @@ public class yolo extends AppCompatActivity {
         setContentView(R.layout.activity_yolo);
         mFirebaseAuth=FirebaseAuth.getInstance();
         emailId = (EditText)findViewById(R.id.Usernametxt);
+        String email=emailId.toString();
         password =(EditText)findViewById(R.id.passwordtxt);
         signUp =(Button)findViewById(R.id.signUpbtn);
         signIn= (Button)findViewById(R.id.signInbtn);
@@ -76,12 +77,12 @@ public class yolo extends AppCompatActivity {
                             else{
                                 //startActivity(new Intent(yolo.this,FoodActivity.class));
                                 Intent homeIntent =new Intent(yolo.this,Home.class);
-                                //Common.currentuser = Usernametxt;
+                                Common.currentuser = email;
                                 startActivity(homeIntent);
-                                finish();
                             }
                         }
                     });
+
                 }
                 else {
                     Toast.makeText(yolo.this,"Error Occurred",Toast.LENGTH_SHORT).show();

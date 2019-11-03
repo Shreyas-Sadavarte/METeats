@@ -7,8 +7,9 @@ import java.util.List;
 public class Request {
     private String phone;
     private String total;
-    private  String name;
+    private String name;
     private List<Order>foods;
+    private String status;
 
     public Request(){
 
@@ -19,9 +20,16 @@ public class Request {
         this.total = total;
         this.name = name;
         this.foods = foods;
+        this.status = "0"; //Default is 0,0:placed,1:Cooking, 2;Cooked
+    }
+    public String getStatus(){
+        return  status;
+    }
+    public void setStatus(){
+        this.status = status;
     }
 
-    public String getPhone() {
+    public  String getPhone() {
         return phone;
     }
 

@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class Cart extends AppCompatActivity {
+    Bundle p1;
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -67,7 +68,7 @@ public class Cart extends AppCompatActivity {
         btnPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialog();
+            showAlertDialog();
 
 
             }
@@ -82,6 +83,10 @@ public class Cart extends AppCompatActivity {
         alertDialog.setTitle("One more Step");
         alertDialog.setMessage("Enter Your Phone");
         final EditText editphone = new EditText(Cart.this);
+        String phone1 = editphone.toString();
+
+        p1 =new Bundle();
+        p1.putString("m1",phone1);
         LinearLayout.LayoutParams lp =new LinearLayout.LayoutParams(
           LinearLayout.LayoutParams.MATCH_PARENT,
           LinearLayout.LayoutParams.MATCH_PARENT
@@ -94,9 +99,9 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Request request = new Request(
-                        Common.currentuser.getDisplayName(),
                         editphone.getText().toString(),
                         txtTotalPrice.getText().toString(),
+                        Common.currentuser,
                         cart
                 );
 
@@ -106,20 +111,19 @@ public class Cart extends AppCompatActivity {
                 //delete cart
 
                 new Database(getBaseContext()).cleanCart();
-                Toast.makeText(Cart.this,"Thank You","Order Placed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Thank You Order Placed", Toast.LENGTH_SHORT).show();
                 finish();
 
 
             }
-        });
-
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
 
             }
         });
+
         alertDialog.show();
 
     }
